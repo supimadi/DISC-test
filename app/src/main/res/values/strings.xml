@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Aplikasi Personality Test Berbasis DISC</string>
+    <string name="question">Pilih Satu dari Empat Pilihan Jawaban yang Paling Menggambarkan Diri Anda.</string>
+    <string name="welcome_text">Welcome! Sebelum menggunakan Aplikasi, Silahkan Mengisi Nama dan Usia.</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="usia">Usia</string>
+    <string name="start">Start!</string>
+    <string name="next">Next</string>
+    <string name="done">Selesai</string>
+
+    <string name="kesimpulan">%1$s dengan usia %2$s tahun, memiliki tipe personality %3$s.</string>
+    <string name="answer_counter">Pertanyaan %1$d/%2$d</string>
+
+    <string name="personality_d">Orang dengan kepribadian Dominance cenderung percaya diri dan menekankan pencapaian hasil akhir.</string>
+    <string name="personality_i">Orang dengan kepribadian Influence cenderung lebih terbuka dan menekankan pada hubungan dan mempengaruhi atau membujuk orang lain.</string>
+    <string name="personality_s">Orang dengan kepribadian Steadiness  cenderung dapat diandalkan dan menekankan kerja sama dan ketulusan.</string>
+    <string name="personality_c">Orang dengan kepribadian Conscientiousness cenderung menekankan pada kualitas, akurasi, keahlian, dan kompetensi.</string>
+
+    <string name="name_empty">Nama jangan kosong!</string>
+    <string name="answer_not_selected">Harap pilih salah satu jawaban!</string>
+    <string name="age_empty">Usia jangan kosong!</string>
+</resources>
