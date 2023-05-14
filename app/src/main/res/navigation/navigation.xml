@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="org.d3if3038.assesment1.ui.WelcomeFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_PTestFragment"
+            app:destination="@id/PTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="org.d3if3038.assesment1.ui.history.HistoryFragment"
+        android:label="@string/test_history"
+        tools:layout="@layout/fragment_history"/>
+    <fragment
+        android:id="@+id/PTestFragment"
+        android:name="org.d3if3038.assesment1.ui.ptest.PTestFragment"
+        android:label="@string/disc_test"
+        tools:layout="@layout/framgnet_ptest"/>
+</navigation>

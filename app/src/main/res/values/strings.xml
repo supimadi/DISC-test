@@ -19,4 +19,8 @@
     <string name="name_empty">Nama jangan kosong!</string>
     <string name="answer_not_selected">Harap pilih salah satu jawaban!</string>
     <string name="age_empty">Usia jangan kosong!</string>
+    <string name="belum_ada_data">Belum Ada Data.</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="test_history">Riwayat Test</string>
+    <string name="disc_test">DISC Test</string>
 </resources>
