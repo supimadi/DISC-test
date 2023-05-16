@@ -8,6 +8,10 @@
     <string name="next">Next</string>
     <string name="done">Selesai</string>
 
+    <string name="name_invalid">Nama tidak boleh kosong.</string>
+    <string name="age_invalid">Usia tidak boleh kosong.</string>
+    <string name="gender_invalid">Pilih jenis kelamin.</string>
+
     <string name="kesimpulan">%1$s dengan usia %2$s tahun, memiliki tipe personality %3$s.</string>
     <string name="answer_counter">Pertanyaan %1$d/%2$d</string>
 
@@ -16,6 +20,8 @@
     <string name="personality_s">Orang dengan kepribadian Steadiness  cenderung dapat diandalkan dan menekankan kerja sama dan ketulusan.</string>
     <string name="personality_c">Orang dengan kepribadian Conscientiousness cenderung menekankan pada kualitas, akurasi, keahlian, dan kompetensi.</string>
 
+    <string name="copyright">Hitung BMI merupakan sebuah aplikasi Android untuk menghitung body mass index (BMI) sehingga seseorang dapat mengetahui apakah berat badannya ideal, gemuk atau kurus.\n\nAplikasi ini dibuat untuk kelas Mobpro 1. Temukan kodenya di https://github.com/indraazimi/hitung-bmi\n\nCopyright © 2021 Indra Azimi.\nAll rights reserved.</string>
+
     <string name="name_empty">Nama jangan kosong!</string>
     <string name="answer_not_selected">Harap pilih salah satu jawaban!</string>
     <string name="age_empty">Usia jangan kosong!</string>
@@ -23,4 +29,8 @@
     <string name="riwayat">Riwayat</string>
     <string name="test_history">Riwayat Test</string>
     <string name="disc_test">DISC Test</string>
+    <string name="tentang">Tentang</string>
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="pria">Pria</string>
+    <string name="wanita">Wanita</string>
 </resources>

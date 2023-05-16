@@ -1,14 +1,14 @@
-package org.d3if3038.assesment1.ui.ptest
+package org.d3if3038.assesment1.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import org.d3if3038.assesment1.databinding.FragmentPtestBinding
+import org.d3if3038.assesment1.databinding.FragmentResultBinding
 
-class PTestFragment : Fragment() {
-    private lateinit var binding: FragmentPtestBinding
+class ResultFragment : Fragment() {
+    private lateinit var binding : FragmentResultBinding
 
 
     override fun onCreateView(
@@ -16,8 +16,9 @@ class PTestFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentPtestBinding.inflate(layoutInflater, container, false)
+        binding = FragmentResultBinding.inflate(layoutInflater, container, false)
 
         return binding.root
     }
+
 }
