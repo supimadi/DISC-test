@@ -58,10 +58,11 @@ class WelcomeFragment : Fragment() {
             }
             R.id.menu_welcome_about -> {
                 findNavController().navigate(R.id.action_welcomeFragment_to_aboutFragment)
+                return true
             }
         }
 
-        return super.onContextItemSelected(item)
+        return super.onOptionsItemSelected(item)
     }
 
     private fun startPersonalityTest() {

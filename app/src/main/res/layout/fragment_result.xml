@@ -9,16 +9,15 @@
         android:id="@+id/resultNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="10dp"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
+        android:paddingVertical="5dp"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:text="Lukman Hakim"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/personalityRadarChart"/>
+        app:layout_constraintEnd_toStartOf="parent" />
 
     <com.github.mikephil.charting.charts.RadarChart
         android:id="@+id/personalityRadarChart"

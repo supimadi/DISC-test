@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aplikasi Personality Test Berbasis DISC</string>
+    <string name="app_name">DISC Personality Test</string>
     <string name="question">Pilih Satu dari Empat Pilihan Jawaban yang Paling Menggambarkan Diri Anda.</string>
     <string name="welcome_text">Welcome! Sebelum menggunakan Aplikasi, Silahkan Mengisi Nama dan Usia.</string>
     <string name="nama_lengkap">Nama Lengkap</string>
@@ -33,4 +33,5 @@
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="pria">Pria</string>
     <string name="wanita">Wanita</string>
+    <string name="hasil_test">Hasil Test</string>
 </resources>
