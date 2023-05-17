@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import org.d3if3038.assesment1.R
 import org.d3if3038.assesment1.databinding.FragmentWelcomeBinding
 import org.d3if3038.assesment1.model.personality.Profile
-import org.d3if3038.assesment1.ui.ptest.PTestFragment
 
 class WelcomeFragment : Fragment() {
     private lateinit var binding: FragmentWelcomeBinding

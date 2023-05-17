@@ -20,23 +20,4 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp()
     }
 
-//    private fun changeToPersonalityTest() {
-//        val fullName = binding.nameInput.text.toString()
-//        if (fullName.isEmpty()) {
-//            Toast.makeText(this, R.string.name_empty, Toast.LENGTH_LONG).show()
-//            return
-//        }
-//
-//        val age = binding.ageInput.text.toString()
-//        if (age.isEmpty()) {
-//            Toast.makeText(this, R.string.age_empty, Toast.LENGTH_LONG).show()
-//            return
-//        }
-//
-//        var personalityTestIntent = Intent(this, PersonalityTestActivity::class.java)
-//        personalityTestIntent.putExtra("fullName", fullName)
-//        personalityTestIntent.putExtra("age", age)
-//
-//        startActivity(personalityTestIntent)
-//    }
 }

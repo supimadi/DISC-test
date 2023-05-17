@@ -32,18 +32,22 @@ class PTestViewModel : ViewModel() {
         PersonalityOption("Directing", "Stimulating", "Tolerant", "Conventional"),
     )
 
-    private var indexAt = MutableLiveData<Int>()
+    private var indexAt = MutableLiveData<Int>(0)
     private var typeDCounter = MutableLiveData<Int>()
     private var typeICounter = MutableLiveData<Int>()
     private var typeSCounter = MutableLiveData<Int>()
     private var typeCCounter = MutableLiveData<Int>()
 
-    fun getOptions(index: Int) : MutableLiveData<PersonalityOption> {
-        return MutableLiveData<PersonalityOption>(options[index])
+    fun getOptions() : PersonalityOption {
+        return options[indexAt.value?.toInt()!!]
     }
 
+    fun getIndex(): MutableLiveData<Int> = indexAt
+
+    fun getLengthQuestion(): Int = options.size
+
     fun increaseIndex() {
-        indexAt.value = indexAt.value?.plus(1)
+        indexAt.value = if (indexAt.value == options.size - 1) indexAt.value else indexAt.value?.plus(1)
     }
     fun increaseDPoint() {
         typeDCounter.value = typeDCounter.value?.plus(1)
