@@ -1,14 +1,17 @@
-package org.d3if3038.assesment1.ui
+package org.d3if3038.assesment1.ui.result
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import org.d3if3038.assesment1.R
 import org.d3if3038.assesment1.databinding.FragmentResultBinding
+import org.d3if3038.assesment1.db.PersonalityDb
 import org.d3if3038.assesment1.model.personality.PersonalityCategories
 
 class ResultFragment : Fragment() {
@@ -20,6 +23,12 @@ class ResultFragment : Fragment() {
     private var age = 0
 
     private val resultArgs: ResultFragmentArgs by navArgs()
+    private val viewModel: ResultViewModel by lazy {
+        val db = PersonalityDb.getInstance(requireContext())
+        val factory = ResultViewModelFactory(db.dao)
+
+        ViewModelProvider(this, factory)[ResultViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +46,7 @@ class ResultFragment : Fragment() {
 
         binding.resultNameTextView.text = fullName
         binding.shareButton.setOnClickListener { sharePersonality() }
+        binding.saveButton.setOnClickListener { persistPersonality() }
 
         when (resultArgs.personalityType) {
             PersonalityCategories.TYPE_D -> {
@@ -79,6 +89,18 @@ class ResultFragment : Fragment() {
             startActivity(shareIntent)
         }
 
+    }
+
+    private fun persistPersonality() {
+        viewModel.persistPersonalityData(
+            fullName,
+            age,
+            resultArgs.isMale,
+            resultArgs.personalityType
+        )
+
+        Toast.makeText(requireContext(), getString(R.string.success_persist_personality_data), Toast.LENGTH_LONG).show()
+        binding.saveButton.isEnabled = false
     }
 
 }

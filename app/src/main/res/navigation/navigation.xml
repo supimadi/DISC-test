@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="org.d3if3038.assesment1.ui.ResultFragment"
+        android:name="org.d3if3038.assesment1.ui.result.ResultFragment"
         android:label="@string/hasil_test"
         tools:layout="@layout/fragment_result">
         <argument
