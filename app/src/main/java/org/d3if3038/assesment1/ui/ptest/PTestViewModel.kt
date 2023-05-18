@@ -33,11 +33,11 @@ class PTestViewModel : ViewModel() {
 //        PersonalityOption("Directing", "Stimulating", "Tolerant", "Conventional"),
     )
 
-    private var indexAt = MutableLiveData<Int>(0)
-    private var typeDCounter = MutableLiveData<Int>(0)
-    private var typeICounter = MutableLiveData<Int>(0)
-    private var typeSCounter = MutableLiveData<Int>(0)
-    private var typeCCounter = MutableLiveData<Int>(0)
+    private var indexAt = MutableLiveData(0)
+    private var typeDCounter = MutableLiveData(0)
+    private var typeICounter = MutableLiveData(0)
+    private var typeSCounter = MutableLiveData(0)
+    private var typeCCounter = MutableLiveData(0)
 
     private fun maxVal(first: Int, second: Int, third: Int, fourth: Int): Boolean {
         return first > second && first > third && first > fourth
