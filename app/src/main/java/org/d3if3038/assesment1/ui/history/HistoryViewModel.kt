@@ -1,8 +1,18 @@
 package org.d3if3038.assesment1.ui.history
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.d3if3038.assesment1.db.PersonalityDao
 
 class HistoryViewModel(private val db: PersonalityDao) : ViewModel() {
     val personalityData = db.getNewestPersonalities()
+
+    fun deleteAllPersonalityData() = viewModelScope.launch {
+        withContext(Dispatchers.IO) {
+            db.clearPersonalitiesData()
+        }
+    }
 }

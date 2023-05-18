@@ -47,4 +47,8 @@
     <string name="type_s">Steadiness</string>
     <string name="type_c">Compliance</string>
     <string name="success_persist_personality_data">Berhasil Menyimpan Jenis Kepribadian</string>
+    <string name="hapus">Hapus</string>
+    <string name="delete_all_confirmation">Hapus Semua Data Kepribadian?</string>
+    <string name="hapus_semua">Hapus Semua</string>
+    <string name="batal">Batal</string>
 </resources>

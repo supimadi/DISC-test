@@ -1,13 +1,13 @@
 package org.d3if3038.assesment1.ui.history
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.d3if3038.assesment1.R
 import org.d3if3038.assesment1.databinding.FragmentHistoryBinding
 import org.d3if3038.assesment1.db.PersonalityDb
 
@@ -30,6 +30,8 @@ class HistoryFragment : Fragment() {
         binding = FragmentHistoryBinding.inflate(layoutInflater, container, false)
         historyAdapter = HistoryAdapter()
 
+        setHasOptionsMenu(true)
+
         with(binding.historyRecycleView) {
             addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
             adapter = historyAdapter
@@ -45,5 +47,32 @@ class HistoryFragment : Fragment() {
 
             historyAdapter.submitList(it)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.history_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_history_delete -> {
+                deleteAllPersonalityDataDialog()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteAllPersonalityDataDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setMessage(getString(R.string.delete_all_confirmation))
+            .setPositiveButton(getString(R.string.hapus_semua)) {_, _ ->
+                viewModel.deleteAllPersonalityData()
+            }
+            .setNegativeButton(getString(R.string.batal)) {dialog, _ ->
+                dialog.cancel()
+            }
+            .show()
     }
 }
