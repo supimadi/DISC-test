@@ -1,7 +1,6 @@
 package org.d3if3038.assesment1.ui.ptest
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,7 +59,6 @@ class PTestFragment : Fragment() {
     }
 
     private fun showResult() {
-        Log.d("FRAGMENT_SWITCH", "Change fragment")
         findNavController().navigate(
             PTestFragmentDirections.actionPTestFragmentToResultFragment(
                 personalityTestArgs.fullName,

@@ -61,11 +61,6 @@
         <argument
             android:name="personalityType"
             app:argType="org.d3if3038.assesment1.model.personality.PersonalityCategories" />
-        <action
-            android:id="@+id/action_resultFragment_to_welcomeFragment"
-            app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true"
-            app:destination="@id/welcomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

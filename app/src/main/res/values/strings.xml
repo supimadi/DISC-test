@@ -15,10 +15,10 @@
     <string name="kesimpulan">%1$s dengan usia %2$s tahun, memiliki tipe personality %3$s.</string>
     <string name="answer_counter">Pertanyaan %1$d/%2$d</string>
 
-    <string name="personality_d">Orang dengan kepribadian Dominance cenderung percaya diri dan menekankan pencapaian hasil akhir.</string>
-    <string name="personality_i">Orang dengan kepribadian Influence cenderung lebih terbuka dan menekankan pada hubungan dan mempengaruhi atau membujuk orang lain.</string>
-    <string name="personality_s">Orang dengan kepribadian Steadiness  cenderung dapat diandalkan dan menekankan kerja sama dan ketulusan.</string>
-    <string name="personality_c">Orang dengan kepribadian Conscientiousness cenderung menekankan pada kualitas, akurasi, keahlian, dan kompetensi.</string>
+    <string name="personality_d">Orang-orang dengan kepribadian Dominance memiliki kecenderungan karakter yang dominan, kuat, dengan ego yang tinggi. They are independent and risk taker. Mereka mudah merasa bosan dengan rutinitas, menyukai tantangan dan inovasi. Kepribadian DISC ini juga menyukai authority, responsibility, decision making, problem solving, multi tasking, maupun hal-hal lain yang membuatnya menjadi lebih dominan.</string>
+    <string name="personality_i">Karakter DISC ini memiliki pengaruh yang besar bagi sekitarnya. Kepercayaan dirinya, antusiasmenya, selera humornya, dan optimismenya membawa semangat bagi lingkungannya. Sebagai negosiator yang handal, orang-orang dengan kepribadian Influence memiliki kemampuan persuasif yang bagus. Mereka menyukai popularitas, sehingga mereka sulit menerima penolakan dari orang lain.</string>
+    <string name="personality_s">Konsisten, tenang, dan sabar adalah beberapa karakter yang menggambarkan kepribadian DISC yang satu ini. Sebaliknya, orang-orang dengan kepribadian Steadiness sulit menerima perubahan dan butuh waktu lama untuk menyesuaikan diri dengan lingkungan baru. Maka, mereka menyukai lingkungan yang memberi rasa aman tanpa perubahan yang mendadak.</string>
+    <string name="personality_c">Orang-orang berkarakter Compliance biasanya tekun, sistematis, teliti, cermat, fokus pada ketepatan dan kualitas. Cenderung analitis dan kritis, sosok kepribadian DISC ini suka mengejar kualitas dengan standar yang tinggi dan mengerjakan tugas-tugas yang rinci. Karenanya, mereka menyukai batasan, prosedur, dan metode yang jelas.</string>
 
     <string name="copyright">Hitung BMI merupakan sebuah aplikasi Android untuk menghitung body mass index (BMI) sehingga seseorang dapat mengetahui apakah berat badannya ideal, gemuk atau kurus.\n\nAplikasi ini dibuat untuk kelas Mobpro 1. Temukan kodenya di https://github.com/indraazimi/hitung-bmi\n\nCopyright © 2021 Indra Azimi.\nAll rights reserved.</string>
 
@@ -34,4 +34,5 @@
     <string name="pria">Pria</string>
     <string name="wanita">Wanita</string>
     <string name="hasil_test">Hasil Test</string>
+    <string name="gambar_ilustrasi_personalitas">Gambar Ilustrasi Personalitas</string>
 </resources>
