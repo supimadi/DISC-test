@@ -15,4 +15,13 @@ class HistoryViewModel(private val db: PersonalityDao) : ViewModel() {
             db.clearPersonalitiesData()
         }
     }
+    fun deletePersonalityData(index: Int) = viewModelScope.launch {
+        if (personalityData.value == null) return@launch
+
+        val id = personalityData.value!![index].id.toInt()
+        withContext(Dispatchers.IO) {
+            db.deletePersonality(id)
+        }
+
+    }
 }

@@ -1,10 +1,12 @@
 package org.d3if3038.assesment1.ui.history
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.d3if3038.assesment1.R
@@ -32,9 +34,20 @@ class HistoryFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+        val swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                viewModel.deletePersonalityData(viewHolder.adapterPosition)
+            }
+
+        }
+
         with(binding.historyRecycleView) {
             addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
             adapter = historyAdapter
+
+            val itemTouchHelper = ItemTouchHelper(swipeHandler)
+            itemTouchHelper.attachToRecyclerView(this)
+
             setHasFixedSize(true)
         }
 

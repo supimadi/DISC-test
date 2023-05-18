@@ -13,7 +13,7 @@ interface PersonalityDao {
     fun insert(vararg personality: PersonalityEntity)
 
     @Query("SELECT * FROM personalities ORDER BY id DESC")
-    fun getNewestPersonalities() : LiveData<List<PersonalityEntity>>
+    fun getNewestPersonalities() : LiveData<MutableList<PersonalityEntity>>
 
     @Query("SELECT * FROM personalities WHERE id = :personalityId")
     fun getPersonalityById(personalityId: Int): LiveData<PersonalityEntity>
@@ -21,6 +21,6 @@ interface PersonalityDao {
     @Query("DELETE FROM personalities")
     fun clearPersonalitiesData()
 
-    @Delete
-    fun deletePersonality(vararg personalities: PersonalityEntity)
+    @Query("DELETE FROM personalities WHERE id = :personalityId")
+    fun deletePersonality(personalityId: Int)
 }

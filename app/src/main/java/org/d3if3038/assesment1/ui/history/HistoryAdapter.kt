@@ -1,5 +1,4 @@
 package org.d3if3038.assesment1.ui.history
-
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
