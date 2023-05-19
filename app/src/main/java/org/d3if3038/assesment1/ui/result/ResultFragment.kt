@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import org.d3if3038.assesment1.R
+import org.d3if3038.assesment1.data.SettingDataStore
+import org.d3if3038.assesment1.data.dataStore
 import org.d3if3038.assesment1.databinding.FragmentResultBinding
 import org.d3if3038.assesment1.db.PersonalityDb
 import org.d3if3038.assesment1.model.personality.PersonalityCategories
@@ -29,6 +31,9 @@ class ResultFragment : Fragment() {
 
         ViewModelProvider(this, factory)[ResultViewModel::class.java]
     }
+    private val settingDataStore: SettingDataStore by lazy {
+        SettingDataStore(requireContext().dataStore)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +51,13 @@ class ResultFragment : Fragment() {
 
         binding.resultNameTextView.text = fullName
         binding.shareButton.setOnClickListener { sharePersonality() }
-        binding.saveButton.setOnClickListener { persistPersonality() }
+
+        if (settingDataStore.getBoolean("auto_save_prefrences", false)) {
+            persistPersonality()
+            binding.saveButton.visibility = View.INVISIBLE
+        } else {
+            binding.saveButton.setOnClickListener { persistPersonality() }
+        }
 
         when (resultArgs.personalityType) {
             PersonalityCategories.TYPE_D -> {

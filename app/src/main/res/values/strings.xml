@@ -20,7 +20,7 @@
     <string name="personality_s">Konsisten, tenang, dan sabar adalah beberapa karakter yang menggambarkan kepribadian DISC yang satu ini. Sebaliknya, orang-orang dengan kepribadian Steadiness sulit menerima perubahan dan butuh waktu lama untuk menyesuaikan diri dengan lingkungan baru. Maka, mereka menyukai lingkungan yang memberi rasa aman tanpa perubahan yang mendadak.</string>
     <string name="personality_c">Orang-orang berkarakter Compliance biasanya tekun, sistematis, teliti, cermat, fokus pada ketepatan dan kualitas. Cenderung analitis dan kritis, sosok kepribadian DISC ini suka mengejar kualitas dengan standar yang tinggi dan mengerjakan tugas-tugas yang rinci. Karenanya, mereka menyukai batasan, prosedur, dan metode yang jelas.</string>
 
-    <string name="copyright">Hitung BMI merupakan sebuah aplikasi Android untuk menghitung body mass index (BMI) sehingga seseorang dapat mengetahui apakah berat badannya ideal, gemuk atau kurus.\n\nAplikasi ini dibuat untuk kelas Mobpro 1. Temukan kodenya di https://github.com/indraazimi/hitung-bmi\n\nCopyright © 2021 Indra Azimi.\nAll rights reserved.</string>
+    <string name="copyright">DISC Personality Test, sesuai namanya adalah aplikasi untuk mengetahui jenis kebpribadian seseorang, secara cepat, mudah, dan akurat.\n\nAplikasi ini dibuat untuk kelas Mobpro 1 (Assessment 1 dan 2). Temukan kodenya di https://github.com/supimadi/DISC-test\n\nCopyright © 2023 Lukman Hakim.\nAll rights reserved.</string>
 
     <string name="share_template">Hallo! Saya %1$s berusia %2$d tahun, memiliki jenis kepribadian %3$s.\n\n%4$s</string>
     <string name="name_history_template">%1$s | %2$d Tahun | %3$s</string>
