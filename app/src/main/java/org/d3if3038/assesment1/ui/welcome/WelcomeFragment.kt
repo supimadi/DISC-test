@@ -60,6 +60,10 @@ class WelcomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_welcomeFragment_to_aboutFragment)
                 return true
             }
+            R.id.menu_welcome_setting -> {
+                findNavController().navigate(R.id.action_welcomeFragment_to_settingsFragment)
+                return true
+            }
         }
 
         return super.onOptionsItemSelected(item)

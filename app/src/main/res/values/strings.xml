@@ -52,4 +52,7 @@
     <string name="hapus_semua">Hapus Semua</string>
     <string name="batal">Batal</string>
     <string name="pilih_jawaban">Pilih dulu jawaban sebelum melanjutkan</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="simpan_otomatis">Simpan Otomatis</string>
+    <string name="penjelasan_simpan_otomatis">Otomatis menyimpan hasil pengujian ketika selesai.</string>
 </resources>

@@ -9,6 +9,11 @@
         app:showAsAction="ifRoom"/>
 
     <item
+        android:id="@+id/menu_welcome_setting"
+        android:title="@string/pengaturan"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/menu_welcome_about"
         android:title="@string/tentang"
         app:showAsAction="never" />
