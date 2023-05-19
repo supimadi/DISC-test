@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -32,15 +33,20 @@ class PTestFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.nextAnswerBtn.setOnClickListener {
+            if (binding.radioGroup.checkedRadioButtonId == -1) {
+                Toast.makeText(context, getString(R.string.pilih_jawaban), Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             recordAnswer()
             nextQuestion()
         }
         viewModel.getIndex().observe(viewLifecycleOwner) {
-            updateCounter(it)
-
             if (it == questionMaxNumber - 1) binding.nextAnswerBtn.text = "Selesai"
-            if (it < questionMaxNumber) updateQuestion()
             if (it == questionMaxNumber) showResult()
+
+            if (it < questionMaxNumber) updateQuestion()
+            updateCounter(it)
         }
 
         updateQuestion()
@@ -73,19 +79,15 @@ class PTestFragment : Fragment() {
         when(binding.radioGroup.checkedRadioButtonId) {
             R.id.answer_0 -> {
                 viewModel.increaseDPoint()
-                return
             }
             R.id.answer_1 -> {
                 viewModel.increaseIPoint()
-                return
             }
             R.id.answer_2 -> {
                 viewModel.increaseSPoint()
-                return
             }
             R.id.answer_3 -> {
-                viewModel.increaseCPoint()
-                return
+                 viewModel.increaseCPoint()
             }
         }
     }

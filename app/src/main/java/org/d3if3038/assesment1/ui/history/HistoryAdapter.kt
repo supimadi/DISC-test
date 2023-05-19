@@ -34,6 +34,10 @@ class HistoryAdapter : ListAdapter<PersonalityEntity, HistoryAdapter.ViewHolder>
 
             }
     }
+    
+    fun getItemByName(position: Int): String {
+        return  getItem(position).fullName
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

@@ -47,7 +47,7 @@ class PTestViewModel : ViewModel() {
         val typeD = typeDCounter.value!!.toInt()
         val typeI = typeICounter.value!!.toInt()
         val typeS = typeSCounter.value!!.toInt()
-        val typeC = typeDCounter.value!!.toInt()
+        val typeC = typeCCounter.value!!.toInt()
 
         return if (maxVal(typeD, typeI, typeS, typeC)) {
             PersonalityCategories.TYPE_D
@@ -81,7 +81,7 @@ class PTestViewModel : ViewModel() {
         typeSCounter.value = typeSCounter.value?.plus(1)
     }
     fun increaseCPoint() {
-        typeCCounter.value = typeCCounter.value?.plus(1)
+         typeCCounter.value = typeCCounter.value?.plus(1)
     }
 
 

@@ -51,4 +51,5 @@
     <string name="delete_all_confirmation">Hapus Semua Data Kepribadian?</string>
     <string name="hapus_semua">Hapus Semua</string>
     <string name="batal">Batal</string>
+    <string name="pilih_jawaban">Pilih dulu jawaban sebelum melanjutkan</string>
 </resources>
