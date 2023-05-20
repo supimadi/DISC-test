@@ -38,7 +38,7 @@ class SettingDataStore(private val prefDataStore: DataStore<Preferences>) : Pref
             prefDataStore.data
                 .catch { emit(emptyPreferences()) }
                 .map {
-                it[booleanPreferencesKey(key)] ?: false
+                it[booleanPreferencesKey(key)] ?: defValue
             }.first()
         }
     }

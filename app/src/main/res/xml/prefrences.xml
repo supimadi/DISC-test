@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:key="@string/auto_save_prefrences_key"
         android:title="@string/simpan_otomatis"
         app:summary="@string/penjelasan_simpan_otomatis" />

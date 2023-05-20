@@ -11,16 +11,25 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import org.d3if3038.assesment1.R
+import org.d3if3038.assesment1.data.SettingDataStore
+import org.d3if3038.assesment1.data.dataStore
 import org.d3if3038.assesment1.databinding.FragmentPtestBinding
+import org.d3if3038.assesment1.db.PersonalityDb
 
 class PTestFragment : Fragment() {
     private lateinit var binding: FragmentPtestBinding
     private var questionMaxNumber: Int = 0
 
     private val viewModel: PTestViewModel by lazy {
-        ViewModelProvider(this)[PTestViewModel::class.java]
+        val db = PersonalityDb.getInstance(requireContext())
+        val factory = PTestViewModelFactory(db.dao)
+
+        ViewModelProvider(this, factory)[PTestViewModel::class.java]
     }
     private val personalityTestArgs:PTestFragmentArgs by navArgs()
+    private val settingDataStore: SettingDataStore by lazy {
+        SettingDataStore(requireContext().dataStore)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +83,15 @@ class PTestFragment : Fragment() {
     }
 
     private fun showResult() {
+        if (settingDataStore.getBoolean(getString(R.string.auto_save_prefrences_key), true)) {
+            viewModel.persistPersonalityData(
+                personalityTestArgs.fullName,
+                personalityTestArgs.age,
+                personalityTestArgs.isMale,
+                viewModel.getResult()
+            )
+        }
+
         findNavController().navigate(
             PTestFragmentDirections.actionPTestFragmentToResultFragment(
                 personalityTestArgs.fullName,

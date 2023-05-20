@@ -2,10 +2,16 @@ package org.d3if3038.assesment1.ui.ptest
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.d3if3038.assesment1.db.PersonalityDao
+import org.d3if3038.assesment1.db.PersonalityEntity
 import org.d3if3038.assesment1.model.personality.PersonalityCategories
 import org.d3if3038.assesment1.model.personality.PersonalityOption
 
-class PTestViewModel : ViewModel() {
+class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
     private val options = listOf(
         PersonalityOption("Forceful", "Expressive", "Restrained", "Careful"),
         PersonalityOption("Pioneering", "Exciting", "Satisfied", "Correct"),
@@ -84,6 +90,25 @@ class PTestViewModel : ViewModel() {
          typeCCounter.value = typeCCounter.value?.plus(1)
     }
 
+    fun persistPersonalityData(
+        fullName: String,
+        age: Int,
+        isMale: Boolean,
+        personalityType: PersonalityCategories
+    ) {
 
+        val personalityData = PersonalityEntity(
+            fullName = fullName,
+            age = age,
+            isMale = isMale,
+            personalityType = personalityType
+        )
+
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                db.insert(personalityData)
+            }
+        }
+    }
 
 }

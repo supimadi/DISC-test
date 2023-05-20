@@ -2,9 +2,7 @@ package org.d3if3038.assesment1.ui.result
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -19,11 +17,6 @@ import org.d3if3038.assesment1.model.personality.PersonalityCategories
 
 class ResultFragment : Fragment() {
     private lateinit var binding : FragmentResultBinding
-
-    private var personalityType = ""
-    private var personalityExpl = ""
-    private var  fullName = ""
-    private var age = 0
 
     private val resultArgs: ResultFragmentArgs by navArgs()
     private val viewModel: ResultViewModel by lazy {
@@ -50,22 +43,47 @@ class ResultFragment : Fragment() {
     ): View? {
         binding = FragmentResultBinding.inflate(layoutInflater, container, false)
 
+        setHasOptionsMenu(true)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        fullName = resultArgs.fullName
-        age = resultArgs.age
+        viewModel.setAutoSave(
+            settingDataStore.getBoolean(
+                getString(R.string.auto_save_prefrences_key),
+                true
+            )
+        )
 
-        binding.resultNameTextView.text = fullName
-        binding.shareButton.setOnClickListener { sharePersonality() }
+        updateUI()
+    }
 
-        if (settingDataStore.getBoolean(getString(R.string.auto_save_prefrences_key), false)) {
-            persistPersonality()
-            binding.saveButton.visibility = View.INVISIBLE
-        } else {
-            binding.saveButton.setOnClickListener { persistPersonality() }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.result_menu, menu)
+
+        val saveMenu = menu.findItem(R.id.menu_result_save)
+        saveMenu.isVisible = !viewModel.isAutoSave()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_result_share -> {
+                sharePersonality()
+                return true
+            }
+            R.id.menu_result_save -> {
+                persistPersonality()
+                return true
+            }
         }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun updateUI() {
+        var personalityType = ""
+        var personalityExpl = ""
 
         when (resultArgs.personalityType) {
             PersonalityCategories.TYPE_D -> {
@@ -90,16 +108,19 @@ class ResultFragment : Fragment() {
             }
         }
 
+        binding.resultNameTextView.text = resultArgs.fullName
         binding.personalityTitleTextView.text = personalityType
         binding.explanationTextView.text = personalityExpl
+
+        viewModel.setPersonalityExpl(personalityExpl)
     }
 
     private fun sharePersonality() {
         val message = getString(R.string.share_template,
-            fullName,
-            age,
-            personalityType,
-            personalityExpl
+            resultArgs.fullName,
+            resultArgs.age,
+            resultArgs.personalityType,
+            viewModel.getPersonalityExpl()
         )
 
         val shareIntent = Intent(Intent.ACTION_SEND)
@@ -112,14 +133,13 @@ class ResultFragment : Fragment() {
 
     private fun persistPersonality() {
         viewModel.persistPersonalityData(
-            fullName,
-            age,
+            resultArgs.fullName,
+            resultArgs.age,
             resultArgs.isMale,
             resultArgs.personalityType
         )
 
         Toast.makeText(requireContext(), getString(R.string.success_persist_personality_data), Toast.LENGTH_LONG).show()
-        binding.saveButton.isEnabled = false
     }
 
 }
