@@ -4,7 +4,7 @@
 
     <SwitchPreference
         android:defaultValue="false"
-        android:key="auto_save_prefrences"
+        android:key="@string/auto_save_prefrences_key"
         android:title="@string/simpan_otomatis"
         app:summary="@string/penjelasan_simpan_otomatis" />
 

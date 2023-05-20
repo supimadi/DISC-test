@@ -48,11 +48,12 @@
     <string name="type_c">Compliance</string>
     <string name="success_persist_personality_data">Berhasil Menyimpan Jenis Kepribadian</string>
     <string name="hapus">Hapus</string>
-    <string name="delete_all_confirmation">Hapus Semua Data Kepribadian?</string>
+    <string name="delete_all_confirmation">Hapus Semua Data Kepribadian?\nGeser riwayat untuk menghapus satu persatu.</string>
     <string name="hapus_semua">Hapus Semua</string>
     <string name="batal">Batal</string>
     <string name="pilih_jawaban">Pilih dulu jawaban sebelum melanjutkan</string>
     <string name="pengaturan">Pengaturan</string>
     <string name="simpan_otomatis">Simpan Otomatis</string>
     <string name="penjelasan_simpan_otomatis">Otomatis menyimpan hasil pengujian ketika selesai.</string>
+    <string name="auto_save_prefrences_key">auto_save_prefrences</string>
 </resources>

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import org.d3if3038.assesment1.R
 import org.d3if3038.assesment1.databinding.FragmentPtestBinding
 
@@ -20,6 +21,14 @@ class PTestFragment : Fragment() {
         ViewModelProvider(this)[PTestViewModel::class.java]
     }
     private val personalityTestArgs:PTestFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.slide_right)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

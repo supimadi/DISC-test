@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import org.d3if3038.assesment1.R
 import org.d3if3038.assesment1.data.SettingDataStore
 import org.d3if3038.assesment1.data.dataStore
@@ -35,6 +36,13 @@ class ResultFragment : Fragment() {
         SettingDataStore(requireContext().dataStore)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.slide_right)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,7 +60,7 @@ class ResultFragment : Fragment() {
         binding.resultNameTextView.text = fullName
         binding.shareButton.setOnClickListener { sharePersonality() }
 
-        if (settingDataStore.getBoolean("auto_save_prefrences", false)) {
+        if (settingDataStore.getBoolean(getString(R.string.auto_save_prefrences_key), false)) {
             persistPersonality()
             binding.saveButton.visibility = View.INVISIBLE
         } else {

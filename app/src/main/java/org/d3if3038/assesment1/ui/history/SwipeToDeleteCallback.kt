@@ -12,7 +12,7 @@ abstract class SwipeToDeleteCallback(
     context: Context
 ) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
-    private val deleteIcon = ContextCompat.getDrawable(context, R.drawable.baseline_delete_forever_24)
+    private val deleteIcon = ContextCompat.getDrawable(context, R.drawable.baseline_delete_24)
     private val backgroud = ColorDrawable()
     private val clearPaint = Paint().apply { xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR) }
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionInflater
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.d3if3038.assesment1.R
 import org.d3if3038.assesment1.databinding.FragmentHistoryBinding
@@ -21,6 +22,13 @@ class HistoryFragment : Fragment() {
         val factory = HistoryViewModelFactory(db.dao)
 
         ViewModelProvider(this, factory)[HistoryViewModel::class.java]
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val transitionInflater = TransitionInflater.from(requireContext())
+        enterTransition = transitionInflater.inflateTransition(R.transition.slide_right)
     }
 
     override fun onCreateView(

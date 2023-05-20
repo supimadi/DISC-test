@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionInflater
 import org.d3if3038.assesment1.R
 import org.d3if3038.assesment1.databinding.FragmentWelcomeBinding
 import org.d3if3038.assesment1.model.personality.Profile
@@ -16,6 +17,13 @@ class WelcomeFragment : Fragment() {
 
     private val viewModel: WelcomeViewModel by lazy {
         ViewModelProvider(this)[WelcomeViewModel::class.java]
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val transitionInflater = TransitionInflater.from(requireContext())
+        exitTransition = transitionInflater.inflateTransition(R.transition.slide_left)
     }
 
     override fun onCreateView(
