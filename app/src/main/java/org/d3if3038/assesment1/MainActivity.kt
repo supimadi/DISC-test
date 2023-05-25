@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (!settingDataStore.getBoolean("is_boarding", false)) {
-            startActivity(Intent(this@MainActivity, OnBoardingActivity::class.java))
+            startActivity(Intent(this, OnBoardingActivity::class.java))
         }
 
         navController = findNavController(R.id.main_container)
