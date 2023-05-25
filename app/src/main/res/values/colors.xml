@@ -13,10 +13,15 @@
     <color name="blue_700">#03588C</color>
     <color name="blue_600">#0370b2</color>
     <color name="blue_500">#048ABF</color>
+    <color name="blue_opaque">#E4FAFF</color>
 
     <color name="orange_700">#D95F18</color>
     <color name="orange_600">#FF7E1C</color>
     <color name="orange_500">#F28705</color>
+    <color name="orange_opaque">#FAEFE4</color>
+
+    <color name="red_700">#A12927</color>
+    <color name="red_opaque">#F4E0DF</color>
 
     <color name="color_d">#D99623</color>
     <color name="color_i">#2ED977</color>

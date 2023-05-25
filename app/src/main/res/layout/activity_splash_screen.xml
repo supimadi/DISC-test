@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashFragment">
+    tools:context=".SplashActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="88dp"
+        android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/logo_telkom_university"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_telyu" />
+        app:srcCompat="@drawable/telkom_university_logo" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -24,5 +25,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_app1" />
+        app:srcCompat="@drawable/splash_logo"
+        android:contentDescription="@string/mindfinder_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

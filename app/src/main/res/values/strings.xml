@@ -57,4 +57,12 @@
     <string name="penjelasan_simpan_otomatis">Otomatis menyimpan hasil pengujian ketika selesai.</string>
     <string name="auto_save_prefrences_key">auto_save_prefrences</string>
     <string name="bagikan_hasil">Bagikan Hasil</string>
+    <string name="logo_telkom_university">Logo Telkom University</string>
+    <string name="mindfinder_logo">mindfinder logo</string>
+
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="artikel">Artikel</string>
+
+    <string name="onboarding_desc_1">Cek Jenis Personalitas Dengan Mudah, Cepat dan Akurat.</string>
+    <string name="onboarding_desc_2">Dapatkan Artikel tentang Kepribadian Anda secara Faktual.</string>
 </resources>
