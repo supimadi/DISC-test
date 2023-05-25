@@ -3,6 +3,7 @@ package org.d3if3038.assesment1
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Window
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroFragment
@@ -17,6 +18,7 @@ class OnBoardingActivity : AppIntro2() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
 
@@ -65,7 +67,7 @@ class OnBoardingActivity : AppIntro2() {
             titleColorRes = R.color.red_700,
             descriptionColorRes = R.color.black,
             backgroundColorRes = R.color.red_opaque,
-            imageDrawable = R.drawable.umm_logo,
+            imageDrawable = R.drawable.umm_telu_logo,
             description = "Pembuatan Aplikasi ini Berkolaborasi dengan Universitas Muhammadiyah Malang.",
             descriptionTypefaceFontRes = R.font.poppins,
         ))

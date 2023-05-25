@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DISC Personality Test</string>
+    <string name="app_name">MindFinder</string>
     <string name="question">Pilih Satu dari Empat Pilihan Jawaban yang Paling Menggambarkan Diri Anda.</string>
     <string name="welcome_text">Welcome! Sebelum menggunakan Aplikasi, Silahkan Mengisi Nama dan Usia.</string>
     <string name="nama_lengkap">Nama Lengkap</string>
