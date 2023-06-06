@@ -3,10 +3,7 @@ package org.d3if3038.assesment1.data
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.SharedPreferencesMigration
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.emptyPreferences
+import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.preference.PreferenceDataStore
 import kotlinx.coroutines.CoroutineScope
@@ -40,6 +37,22 @@ class SettingDataStore(private val prefDataStore: DataStore<Preferences>) : Pref
                 .map {
                 it[booleanPreferencesKey(key)] ?: defValue
             }.first()
+        }
+    }
+
+    override fun putString(key: String?, value: String?) {
+        CoroutineScope(Dispatchers.IO).launch {
+            prefDataStore.edit { it[stringPreferencesKey(key!!)] = value!! }
+        }
+    }
+
+    override fun getString(key: String?, defValue: String?): String? {
+        return runBlocking {
+            prefDataStore.data
+                .catch { emit(emptyPreferences()) }
+                .map {
+                    it[stringPreferencesKey(key!!)] ?: defValue
+                }.first()
         }
     }
 

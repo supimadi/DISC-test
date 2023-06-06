@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -60,7 +61,7 @@ class PTestFragment : Fragment() {
             nextQuestion()
         }
         viewModel.getIndex().observe(viewLifecycleOwner) {
-            if (it == questionMaxNumber - 1) binding.nextAnswerBtn.text = "Selesai"
+            if (it == questionMaxNumber - 1) binding.nextAnswerBtn.text = getString(R.string.selesai)
             if (it == questionMaxNumber) showResult()
 
             if (it < questionMaxNumber) updateQuestion()
@@ -88,7 +89,8 @@ class PTestFragment : Fragment() {
                 personalityTestArgs.fullName,
                 personalityTestArgs.age,
                 personalityTestArgs.isMale,
-                viewModel.getResult()
+                viewModel.getResult(),
+                settingDataStore.getString(getString(R.string.token_admin_preferences), "")!!
             )
         }
 

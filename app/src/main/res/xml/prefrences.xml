@@ -8,4 +8,10 @@
         android:title="@string/simpan_otomatis"
         app:summary="@string/penjelasan_simpan_otomatis" />
 
+    <EditTextPreference
+        android:key="@string/token_admin_preferences"
+        android:title="@string/token"
+        android:summary="@string/penjelasan_token"
+        />
+
 </PreferenceScreen>

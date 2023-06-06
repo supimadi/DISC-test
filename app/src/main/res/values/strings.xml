@@ -65,4 +65,8 @@
 
     <string name="onboarding_desc_1">Cek Jenis Personalitas Dengan Mudah, Cepat dan Akurat.</string>
     <string name="onboarding_desc_2">Dapatkan Artikel tentang Kepribadian Anda secara Faktual.</string>
+    <string name="token_admin_preferences">token_admin_preferences</string>
+    <string name="token">Token</string>
+    <string name="penjelasan_token">Token untuk mengsinkronisasikan data dengan Admin.</string>
+    <string name="selesai">Selesai</string>
 </resources>
