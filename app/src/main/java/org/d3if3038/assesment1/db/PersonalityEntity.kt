@@ -8,6 +8,7 @@ import org.d3if3038.assesment1.model.personality.PersonalityCategories
 data class PersonalityEntity (
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L,
+    var documentId: String = "",
     var fullName: String,
     var age: Int,
     var isMale: Boolean,

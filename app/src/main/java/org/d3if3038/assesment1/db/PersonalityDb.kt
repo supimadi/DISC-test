@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [PersonalityEntity::class], version = 1, exportSchema = false)
+@Database(entities = [PersonalityEntity::class], version = 3, exportSchema = false)
 abstract class PersonalityDb : RoomDatabase() {
 
     abstract val dao: PersonalityDao

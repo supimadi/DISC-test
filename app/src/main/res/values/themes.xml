@@ -15,6 +15,7 @@
         <!-- Customize your theme here. -->
 
         <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="toolbarStyle">@style/Widget.Material3.Toolbar</item>
         <item name="android:fontFamily">@font/poppins</item>
     </style>
 </resources>

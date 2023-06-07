@@ -11,7 +11,6 @@
     <EditTextPreference
         android:key="@string/token_admin_preferences"
         android:title="@string/token"
-        android:summary="@string/penjelasan_token"
-        />
+        android:summary="@string/penjelasan_token" />
 
 </PreferenceScreen>

@@ -112,26 +112,26 @@ class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
             personalityType = personalityType
         )
 
-        val personality = hashMapOf(
-            "fullName" to fullName,
-            "age" to age,
-            "isMale" to isMale,
-            "personalityType" to personalityType,
-        )
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                // add to firebase cloud
-                firebaseDb.collection("personalities/result/${token}")
-                    .add(personality)
-                    .addOnSuccessListener { documentReference ->
-                        Log.d("Firebase", "DocumentSnapshot added with ID: ${documentReference.id}")
-                    }
-                    .addOnFailureListener { e ->
-                        Log.w("Firebase", "Error adding document", e)
-                    }
+                // add data to firebase cloud
+
+                if (token.isEmpty()) {
+                    return@withContext
+                }
+
+                val doc = firebaseDb.collection("personalities_result_${token}").document()
+                personalityData.documentId = doc.id
+
+                doc.set(personalityData)
+                .addOnFailureListener { e ->
+                    Log.w("Firebase", "Error adding document", e)
+                    return@addOnFailureListener
+                }
 
                 db.insert(personalityData)
+
             }
         }
     }
