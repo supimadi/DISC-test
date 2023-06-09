@@ -117,10 +117,10 @@ class ResultFragment : Fragment() {
 
     private fun sharePersonality() {
         val message = getString(R.string.share_template,
-            resultArgs.fullName,
+            binding.resultNameTextView.text,
             resultArgs.age,
-            resultArgs.personalityType,
-            viewModel.getPersonalityExpl()
+            binding.personalityTitleTextView.text,
+            binding.explanationTextView.text
         )
 
         val shareIntent = Intent(Intent.ACTION_SEND)
