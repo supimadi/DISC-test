@@ -57,4 +57,6 @@
     <string name="penjelasan_simpan_otomatis">Otomatis menyimpan hasil pengujian ketika selesai.</string>
     <string name="auto_save_prefrences_key">auto_save_prefrences</string>
     <string name="bagikan_hasil">Bagikan Hasil</string>
+    <string name="koneksi_error">Koneksi Error</string>
+    <string name="selesai">Selesai</string>
 </resources>

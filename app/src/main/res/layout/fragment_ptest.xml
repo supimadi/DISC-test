@@ -35,8 +35,31 @@
             app:layout_constraintTop_toBottomOf="@id/question_text"
             tools:text="Pertanyaan 1/24" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/answerCounterText"
+            app:layout_constraintBottom_toBottomOf="@id/nextAnswerBtn"/>
+
+        <TextView
+            android:id="@+id/networkError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:text="@string/koneksi_error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/answerCounterText"
+            app:layout_constraintBottom_toBottomOf="@id/nextAnswerBtn"/>
+
         <RadioGroup
             android:id="@+id/radioGroup"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
@@ -70,13 +93,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Restrained" />
-
         </RadioGroup>
 
         <Button
             android:id="@+id/nextAnswerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             android:text="@string/next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/radioGroup"
