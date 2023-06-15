@@ -8,12 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
+import com.bumptech.glide.Glide
 import org.d3if3038.assesment1.R
 import org.d3if3038.assesment1.data.SettingDataStore
 import org.d3if3038.assesment1.data.dataStore
 import org.d3if3038.assesment1.databinding.FragmentResultBinding
 import org.d3if3038.assesment1.db.PersonalityDb
 import org.d3if3038.assesment1.model.personality.PersonalityCategories
+import org.d3if3038.assesment1.network.PersonalityApi
 
 class ResultFragment : Fragment() {
     private lateinit var binding : FragmentResultBinding
@@ -89,24 +91,25 @@ class ResultFragment : Fragment() {
             PersonalityCategories.TYPE_D -> {
                 personalityType = getString(R.string.type_d)
                 personalityExpl = getString(R.string.personality_d)
-                binding.personalityImage.setImageResource(R.drawable.personality_dominance)
             }
             PersonalityCategories.TYPE_I -> {
                 personalityType = getString(R.string.type_i)
                 personalityExpl = getString(R.string.personality_i)
-                binding.personalityImage.setImageResource(R.drawable.personality_influence)
             }
             PersonalityCategories.TYPE_S -> {
                 personalityType = getString(R.string.type_s)
                 personalityExpl = getString(R.string.personality_s)
-                binding.personalityImage.setImageResource(R.drawable.personality_steady)
             }
             PersonalityCategories.TYPE_C -> {
                 personalityType = getString(R.string.type_c)
                 personalityExpl = getString(R.string.personality_c)
-                binding.personalityImage.setImageResource(R.drawable.personality_conscientiousness)
             }
         }
+
+        Glide.with(binding.personalityImage)
+            .load(PersonalityApi.getImagePersonalityTypeUrl(personalityType.lowercase()))
+            .error(R.drawable.baseline_broken_image_24)
+            .into(binding.personalityImage)
 
         binding.resultNameTextView.text = resultArgs.fullName
         binding.personalityTitleTextView.text = personalityType
