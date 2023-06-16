@@ -59,4 +59,7 @@
     <string name="bagikan_hasil">Bagikan Hasil</string>
     <string name="koneksi_error">Koneksi Error</string>
     <string name="selesai">Selesai</string>
+    <string name="channel_name">Fun Fact</string>
+    <string name="channel_desc">Fakta menarik mengenai kepribadian manusia</string>
+    <string name="notif_title">Fun Fact</string>
 </resources>

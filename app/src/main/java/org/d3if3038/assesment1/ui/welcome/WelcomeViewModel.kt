@@ -1,9 +1,23 @@
 package org.d3if3038.assesment1.ui.welcome
 
+import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.d3if3038.assesment1.model.personality.Profile
+import org.d3if3038.assesment1.network.ApiStatus
+import org.d3if3038.assesment1.network.FunFactsWorker
+import org.d3if3038.assesment1.network.PersonalityApi
+import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 class WelcomeViewModel : ViewModel() {
 
@@ -16,6 +30,27 @@ class WelcomeViewModel : ViewModel() {
 
     fun doneNavPersonalityTest() {
         personalityTest.value = null
+    }
+
+    fun fireFactNotif(app: Application) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            val funFacts = PersonalityApi.service.getFunFacts()
+            val workerRequest = OneTimeWorkRequestBuilder<FunFactsWorker>()
+                .setInitialDelay(2, TimeUnit.MINUTES)
+                .setInputData(workDataOf(
+                    "FUN_FACTS" to funFacts[Random.nextInt(0, funFacts.size)].facts
+                ))
+                .build()
+
+            WorkManager.getInstance(app).enqueueUniqueWork(
+                FunFactsWorker.WORK_NAME,
+                ExistingWorkPolicy.REPLACE,
+                workerRequest
+            )
+
+        } catch (e: Exception) {
+            Log.e("NOTIFICATION", "Failure: ${e.message}")
+        }
     }
 
     fun getNavPersonalityTest(): LiveData<Profile?> = personalityTest

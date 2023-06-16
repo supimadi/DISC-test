@@ -2,6 +2,7 @@ package org.d3if3038.assesment1.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import org.d3if3038.assesment1.model.facts.FunFacts
 import org.d3if3038.assesment1.model.personality.PersonalityOption
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -23,6 +24,9 @@ interface PersonalityApiService {
 
     @GET("data-options.json")
     suspend fun getOptions(): List<PersonalityOption>
+
+    @GET("fun-facts.json")
+    suspend fun getFunFacts(): List<FunFacts>
 }
 
 enum class ApiStatus { LOADING, FAILED, SUCCESS }
