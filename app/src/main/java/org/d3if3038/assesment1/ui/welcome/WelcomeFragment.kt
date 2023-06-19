@@ -1,13 +1,18 @@
 package org.d3if3038.assesment1.ui.welcome
 
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.*
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
+import org.d3if3038.assesment1.MainActivity
 import org.d3if3038.assesment1.R
 import org.d3if3038.assesment1.databinding.FragmentWelcomeBinding
 import org.d3if3038.assesment1.model.personality.Profile
@@ -40,6 +45,7 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding.startButton.setOnClickListener { startPersonalityTest() }
+        viewModel.fireFactNotif(requireActivity().application)
         viewModel.getNavPersonalityTest().observe(viewLifecycleOwner) {
             if (it == null) return@observe
             findNavController().navigate(
@@ -102,6 +108,24 @@ class WelcomeFragment : Fragment() {
                 age.toInt(),
                 selectedId == R.id.maleRadioButton)
         )
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun requestNotificationPermission() {
+        if (
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+                MainActivity.PERMISSION_REQUEST_CODE
+            )
+
+        }
 
     }
 }

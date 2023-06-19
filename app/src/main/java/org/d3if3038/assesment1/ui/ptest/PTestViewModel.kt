@@ -1,6 +1,7 @@
 package org.d3if3038.assesment1.ui.ptest
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,34 +16,13 @@ import org.d3if3038.assesment1.db.PersonalityDao
 import org.d3if3038.assesment1.db.PersonalityEntity
 import org.d3if3038.assesment1.model.personality.PersonalityCategories
 import org.d3if3038.assesment1.model.personality.PersonalityOption
+import org.d3if3038.assesment1.network.ApiStatus
+import org.d3if3038.assesment1.network.PersonalityApi
 
 class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
-    private val options = listOf(
-        PersonalityOption("Dominan", "Ekspresif", "Terkendali", "Peduli"),
-        PersonalityOption("Terencana", "Menyenangkan", "Memuaskan", "Jujur"),
-        PersonalityOption("Tegas", "Bersemangat", "Rela", "Teliti"),
-        PersonalityOption("Berargumen", "Tidak terprediksi", "Ragu", "Tidak percaya diri"),
-        PersonalityOption("Berani mengambil resiko", "Terbuka", "Sabar", "Hormat"),
-        PersonalityOption("Bisa diandalkan", "Meyakinkan", "Lemah lembut", "Logika"),
-        PersonalityOption("Menentukan", "Pemeriah suasana", "Tenang", "Berhati - hati"),
-        PersonalityOption("Asertif", "Terkenal", "Berpengaruh", "Sempurna"),
-        PersonalityOption("Keras kepala", "Bersemangat", "Santai", "Tertutup"),
-        PersonalityOption("Gigih", "Optimis", "Rela berkorban", "Sistematis"),
-        PersonalityOption("Memukau", "Suka berbicara", "Ramah", "Rendah hati"),
-        PersonalityOption("Susah diatur", "Santai", "Murah hati", "Realistis"),
-        PersonalityOption("Suka tantangan", "Menawan", "Konsisten", "Disiplin"),
-        PersonalityOption("Agresif", "Atraktif", "Stabil", "Terkendali"),
-        PersonalityOption("Bertekad", "Antusias", "Simpatis", "Analitis"),
-        PersonalityOption("Mengarahkan", "Impulsif", "Lambat", "Kritis"),
-        PersonalityOption("Karakter kuat", "Penuh semangat", "Santai", "Konsisten"),
-        PersonalityOption("Mandiri", "Suka bersosialisasi", "Baik", "Terstruktur"),
-        PersonalityOption("Berterus terang", "Terkenal", "Mudah bergaul", "Idealis"),
-        PersonalityOption("Tidak sabaran", "Emosional", "Sering menunda pekerjaan", "Serius"),
-        PersonalityOption("Kompetitif", "Spontan", "Setia", "Tanggap"),
-        PersonalityOption("Berani", "Mempesona", "Menghargai", "Rela berkorban"),
-        PersonalityOption("Ambisius", "Banyak Tingkah", "Bergantung", "Tabah"),
-        PersonalityOption("Mengarahkan", "Memotivasi", "Toleransi", "Mengikuti kebiasaan"),
-    )
+    private val apiStatus = MutableLiveData<ApiStatus>()
+    private val options = MutableLiveData<List<PersonalityOption>>()
+    private var optionsLength = 0
 
     private val firebaseDb = Firebase.firestore
 
@@ -52,8 +32,27 @@ class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
     private var typeSCounter = MutableLiveData(0)
     private var typeCCounter = MutableLiveData(0)
 
+    init {
+        fetchOptions()
+    }
+
     private fun maxVal(first: Int, second: Int, third: Int, fourth: Int): Boolean {
         return first > second && first > third && first > fourth
+    }
+
+    private fun fetchOptions() = viewModelScope.launch(Dispatchers.IO) {
+        apiStatus.postValue(ApiStatus.LOADING)
+        try {
+            options.postValue(PersonalityApi.service.getOptions())
+            apiStatus.postValue(ApiStatus.SUCCESS)
+        } catch (e: Exception) {
+            Log.e("FETCHING DATA", "Failure: ${e.message}")
+            apiStatus.postValue(ApiStatus.FAILED)
+        }
+    }
+
+    fun getQuestionLength() : Int {
+        return options.value?.size!!
     }
 
     fun getResult(): PersonalityCategories {
@@ -74,15 +73,15 @@ class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
     }
 
     fun getOptions() : PersonalityOption {
-        return options[indexAt.value?.toInt()!!]
+        return options.value!![indexAt.value?.toInt()!!]
     }
+
+    fun getApiStatus(): LiveData<ApiStatus> = apiStatus
 
     fun getIndex(): MutableLiveData<Int> = indexAt
 
-    fun getLengthQuestion(): Int = options.size
-
     fun increaseIndex() {
-        indexAt.value = if (indexAt.value == options.size) indexAt.value else indexAt.value?.plus(1)
+        indexAt.value = if (indexAt.value == options.value!!.size) indexAt.value else indexAt.value?.plus(1)
     }
     fun increaseDPoint() {
         typeDCounter.value = typeDCounter.value?.plus(1)

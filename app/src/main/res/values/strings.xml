@@ -57,6 +57,7 @@
     <string name="penjelasan_simpan_otomatis">Otomatis menyimpan hasil pengujian ketika selesai.</string>
     <string name="auto_save_prefrences_key">auto_save_prefrences</string>
     <string name="bagikan_hasil">Bagikan Hasil</string>
+
     <string name="logo_telkom_university">Logo Telkom University</string>
     <string name="mindfinder_logo">mindfinder logo</string>
 
@@ -69,4 +70,9 @@
     <string name="token">Token</string>
     <string name="penjelasan_token">Token untuk mengsinkronisasikan data dengan Admin.</string>
     <string name="selesai">Selesai</string>
+
+    <string name="koneksi_error">Koneksi Error</string>
+    <string name="channel_name">Fun Fact</string>
+    <string name="channel_desc">Fakta menarik mengenai kepribadian manusia</string>
+    <string name="notif_title">Fun Fact</string>
 </resources>

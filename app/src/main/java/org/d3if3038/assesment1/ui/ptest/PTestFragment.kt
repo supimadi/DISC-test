@@ -16,10 +16,10 @@ import org.d3if3038.assesment1.data.SettingDataStore
 import org.d3if3038.assesment1.data.dataStore
 import org.d3if3038.assesment1.databinding.FragmentPtestBinding
 import org.d3if3038.assesment1.db.PersonalityDb
+import org.d3if3038.assesment1.network.ApiStatus
 
 class PTestFragment : Fragment() {
     private lateinit var binding: FragmentPtestBinding
-    private var questionMaxNumber: Int = 0
 
     private val viewModel: PTestViewModel by lazy {
         val db = PersonalityDb.getInstance(requireContext())
@@ -60,16 +60,38 @@ class PTestFragment : Fragment() {
             recordAnswer()
             nextQuestion()
         }
+        viewModel.getApiStatus().observe(viewLifecycleOwner) {
+            if (it == null) return@observe
+
+            when(it) {
+                ApiStatus.LOADING -> {}
+                ApiStatus.FAILED -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.networkError.visibility = View.VISIBLE
+                }
+                ApiStatus.SUCCESS -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.networkError.visibility = View.GONE
+
+                    binding.radioGroup.visibility = View.VISIBLE
+                    binding.nextAnswerBtn.visibility = View.VISIBLE
+
+                    updateQuestion()
+                    updateCounter(0)
+                }
+            }
+        }
         viewModel.getIndex().observe(viewLifecycleOwner) {
+            if (it == 0) return@observe
+
+            val questionMaxNumber = viewModel.getQuestionLength()
+
             if (it == questionMaxNumber - 1) binding.nextAnswerBtn.text = getString(R.string.selesai)
             if (it == questionMaxNumber) showResult()
 
             if (it < questionMaxNumber) updateQuestion()
             updateCounter(it)
         }
-
-        updateQuestion()
-        questionMaxNumber = viewModel.getLengthQuestion()
     }
 
     private fun nextQuestion() {
@@ -80,7 +102,7 @@ class PTestFragment : Fragment() {
         binding.answerCounterText.text = getString(
             R.string.answer_counter,
             index + 1,
-            questionMaxNumber)
+            viewModel.getQuestionLength())
     }
 
     private fun showResult() {
