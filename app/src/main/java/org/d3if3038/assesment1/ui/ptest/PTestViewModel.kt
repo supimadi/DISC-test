@@ -8,10 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.d3if3038.assesment1.data.SettingDataStore
-import org.d3if3038.assesment1.data.dataStore
 import org.d3if3038.assesment1.db.PersonalityDao
 import org.d3if3038.assesment1.db.PersonalityEntity
 import org.d3if3038.assesment1.model.personality.PersonalityCategories
@@ -21,8 +20,7 @@ import org.d3if3038.assesment1.network.PersonalityApi
 
 class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
     private val apiStatus = MutableLiveData<ApiStatus>()
-    private val options = MutableLiveData<List<PersonalityOption>>()
-    private var optionsLength = 0
+    private val options: MutableList<PersonalityOption> = mutableListOf()
 
     private val firebaseDb = Firebase.firestore
 
@@ -42,8 +40,13 @@ class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
 
     private fun fetchOptions() = viewModelScope.launch(Dispatchers.IO) {
         apiStatus.postValue(ApiStatus.LOADING)
+
         try {
-            options.postValue(PersonalityApi.service.getOptions())
+            val optionsValue = async {
+                PersonalityApi.service.getOptions()
+            }
+
+            options.addAll(optionsValue.await())
             apiStatus.postValue(ApiStatus.SUCCESS)
         } catch (e: Exception) {
             Log.e("FETCHING DATA", "Failure: ${e.message}")
@@ -52,7 +55,7 @@ class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
     }
 
     fun getQuestionLength() : Int {
-        return options.value?.size!!
+        return options.size
     }
 
     fun getResult(): PersonalityCategories {
@@ -73,7 +76,7 @@ class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
     }
 
     fun getOptions() : PersonalityOption {
-        return options.value!![indexAt.value?.toInt()!!]
+        return options[indexAt.value?.toInt()!!]
     }
 
     fun getApiStatus(): LiveData<ApiStatus> = apiStatus
@@ -81,7 +84,7 @@ class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
     fun getIndex(): MutableLiveData<Int> = indexAt
 
     fun increaseIndex() {
-        indexAt.value = if (indexAt.value == options.value!!.size) indexAt.value else indexAt.value?.plus(1)
+        indexAt.value = if (indexAt.value == options.size) indexAt.value else indexAt.value?.plus(1)
     }
     fun increaseDPoint() {
         typeDCounter.value = typeDCounter.value?.plus(1)

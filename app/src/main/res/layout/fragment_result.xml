@@ -31,7 +31,7 @@
             android:layout_height="350dp"
             android:scaleType="fitCenter"
             android:contentDescription="@string/gambar_ilustrasi_personalitas"
-            android:src="@drawable/personality_dominance"
+            android:src="@drawable/baseline_broken_image_24"
             app:layout_constraintTop_toBottomOf="@id/resultNameTextView"
             app:layout_constraintBottom_toTopOf="@id/personalityTitleTextView"
             app:layout_constraintStart_toStartOf="parent"

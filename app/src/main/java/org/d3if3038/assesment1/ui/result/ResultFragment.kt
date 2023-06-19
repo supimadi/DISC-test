@@ -1,5 +1,6 @@
 package org.d3if3038.assesment1.ui.result
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
@@ -118,6 +119,7 @@ class ResultFragment : Fragment() {
         viewModel.setPersonalityExpl(personalityExpl)
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun sharePersonality() {
         val message = getString(R.string.share_template,
             binding.resultNameTextView.text,

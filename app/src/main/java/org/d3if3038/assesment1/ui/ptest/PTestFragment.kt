@@ -60,10 +60,10 @@ class PTestFragment : Fragment() {
             recordAnswer()
             nextQuestion()
         }
-        viewModel.getApiStatus().observe(viewLifecycleOwner) {
-            if (it == null) return@observe
+        viewModel.getApiStatus().observe(viewLifecycleOwner) { apiStatus ->
+            if (apiStatus == null) return@observe
 
-            when(it) {
+            when(apiStatus) {
                 ApiStatus.LOADING -> {}
                 ApiStatus.FAILED -> {
                     binding.progressBar.visibility = View.GONE
