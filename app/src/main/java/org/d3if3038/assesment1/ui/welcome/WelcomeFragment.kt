@@ -57,6 +57,10 @@ class WelcomeFragment : Fragment() {
             )
             viewModel.doneNavPersonalityTest()
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestNotificationPermission()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

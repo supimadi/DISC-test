@@ -62,10 +62,9 @@
     <string name="mindfinder_logo">mindfinder logo</string>
 
     <string name="selamat_datang">Selamat Datang</string>
-    <string name="artikel">Artikel</string>
 
     <string name="onboarding_desc_1">Cek Jenis Personalitas Dengan Mudah, Cepat dan Akurat.</string>
-    <string name="onboarding_desc_2">Dapatkan Artikel tentang Kepribadian Anda secara Faktual.</string>
+    <string name="onboarding_desc_2">Dapatkan Notifikasi Fakta Menarik Mengenai Kepribadian Manusia.</string>
     <string name="token_admin_preferences">token_admin_preferences</string>
     <string name="token">Token</string>
     <string name="penjelasan_token">Token untuk mengsinkronisasikan data dengan Admin.</string>
@@ -75,4 +74,8 @@
     <string name="channel_name">Fun Fact</string>
     <string name="channel_desc">Fakta menarik mengenai kepribadian manusia</string>
     <string name="notif_title">Fun Fact</string>
+
+    <string name="fun_facts">Fun Facts</string>
+    <string name="onboarding_desc_3">Pembuatan Aplikasi Ini Dikerjakan Oleh Mahasiswa Telkom sebagai Bentuk Proyek Tingkat 2.</string>
+    <string name="indie">Indie</string>
 </resources>

@@ -1,6 +1,7 @@
 package org.d3if3038.assesment1
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.Window
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -39,6 +40,9 @@ class OnBoardingActivity : AppIntro2() {
             descriptionParallaxFactor = 2.0
         ))
 
+        // make the onboarding page fullscreen
+        setImmersiveMode()
+
         addSlide(AppIntroFragment.createInstance(
             title = getString(R.string.selamat_datang),
             titleTypefaceFontRes = R.font.poppins,
@@ -51,7 +55,7 @@ class OnBoardingActivity : AppIntro2() {
         ))
 
         addSlide(AppIntroFragment.createInstance(
-            title = getString(R.string.artikel),
+            title = getString(R.string.fun_facts),
             titleTypefaceFontRes = R.font.poppins,
             titleColorRes = R.color.blue_700,
             descriptionColorRes = R.color.black,
@@ -62,15 +66,23 @@ class OnBoardingActivity : AppIntro2() {
         ))
 
         addSlide(AppIntroFragment.createInstance(
-            title = "Kolaborasi",
+            title = getString(R.string.indie),
             titleTypefaceFontRes = R.font.poppins,
             titleColorRes = R.color.red_700,
             descriptionColorRes = R.color.black,
             backgroundColorRes = R.color.red_opaque,
-            imageDrawable = R.drawable.umm_telu_logo,
-            description = "Pembuatan Aplikasi ini Berkolaborasi dengan Universitas Muhammadiyah Malang.",
+            imageDrawable = R.drawable.telkom_university_logo,
+            description = getString(R.string.onboarding_desc_3),
             descriptionTypefaceFontRes = R.font.poppins,
         ))
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            askForPermissions(
+                permissions = arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+                slideNumber = 2,
+                required = false
+            )
+        }
 
     }
 
