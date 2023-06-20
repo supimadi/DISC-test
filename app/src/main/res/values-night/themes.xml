@@ -11,7 +11,8 @@
         <item name="colorSecondaryVariant">@color/orange_500</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/toolbar_color_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
 
         <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
         <item name="toolbarStyle">@style/Widget.Material3.Toolbar</item>
