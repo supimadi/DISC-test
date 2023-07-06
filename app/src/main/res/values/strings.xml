@@ -44,7 +44,7 @@
 
     <string name="type_d">Dominance</string>
     <string name="type_i">Influence</string>
-    <string name="type_s">Steadiness</string>
+    <string name="type_s">Steady</string>
     <string name="type_c">Compliance</string>
     <string name="success_persist_personality_data">Berhasil Menyimpan Jenis Kepribadian</string>
     <string name="hapus">Hapus</string>
