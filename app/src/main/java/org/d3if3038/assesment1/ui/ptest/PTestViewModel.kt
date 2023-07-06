@@ -117,12 +117,13 @@ class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                // add data to firebase cloud
+                db.insert(personalityData)
 
                 if (token.isEmpty()) {
                     return@withContext
                 }
 
+                // add data to firebase cloud
                 val doc = firebaseDb.collection("personalities_result_${token}").document()
                 personalityData.documentId = doc.id
 
@@ -131,8 +132,6 @@ class PTestViewModel(private val db: PersonalityDao) : ViewModel() {
                     Log.w("Firebase", "Error adding document", e)
                     return@addOnFailureListener
                 }
-
-                db.insert(personalityData)
 
             }
         }
